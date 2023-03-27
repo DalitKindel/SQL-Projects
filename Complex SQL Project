@@ -224,7 +224,7 @@ FROM     CTE_Lag
 ORDER BY DepartmentName, HireDate DESC
 
 
---------QUESTION NUMBER 10--------
+--------QUESTION #10--------
 --Write a query that shows the details of employees who work in the same department and were hired on the same date. 
 --The employees will be displayed as a list against each combination of receipt date and department number.
 
