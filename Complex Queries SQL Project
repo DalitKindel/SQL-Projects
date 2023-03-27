@@ -1,7 +1,10 @@
 
---------DALIT KINDEL__SQL PROJECT---------
+--Project Goal: Applying SQL commands on the "AdventureWorks2019" database and answering 10 complex SQL questions.
 
---------QUESTION NUMBER 1--------
+
+--------QUESTION #1--------
+--Write a query that displays the information about unpurchased products in the orders table.
+--Display: product, name (product name), color, list price, size.
 
 USE AdventureWorks2019                
 
@@ -13,6 +16,7 @@ WHERE    ProductID NOT IN (SELECT s.ProductID
 
 
 --------UPDATE--------
+--Before solving question #2, run the following updates:
 
 USE AdventureWorks2019
 
@@ -29,7 +33,11 @@ SET      PersonID = CustomerID + 1700
 WHERE    CustomerID >= 352 AND CustomerID <= 701
 
 
---------QUESTION NUMBER 2--------
+--------QUESTION #2--------
+--Write a query that displays information about customers who have not placed orders.
+--Display: Customerid, LastName, FirstName (customer name).
+--Sort the report by Customerid in ascending order.
+--If the customer does not have a first and last name, display 'unknown'
 
 USE AdventureWorks2019
 
@@ -44,7 +52,10 @@ WHERE    c.CustomerID NOT IN (SELECT CustomerID
 ORDER BY c.CustomerID
 
 
---------QUESTION NUMBER 3--------
+--------QUESTION #3--------
+--Write a query that displays the details of the 10 customers who made the most orders.
+--Display: Customerid, FirstName, LastName, and the number of orders placed by the customers.
+--Sort the report by CountOfOrders in ascending order.
 
 USE AdventureWorks2019
 
@@ -57,7 +68,9 @@ ON       s.CustomerID = c.CustomerID
 ORDER BY CountOfOrders DESC
 
 
---------QUESTION NUMBER 4--------
+--------QUESTION #4--------
+--Write a query that displays information about employees and their roles.
+--Display: FirstName, LastName, JobTitle, HireDate, and the number of employees in the same position the employee is in.
 
 USE AdventureWorks2019
 
@@ -72,7 +85,9 @@ SELECT   FirstName, LastName, JobTitle, HireDate, CountOfTitle
 FROM     CTE_Employee 
 
 
---------QUESTION NUMBER 5--------
+--------QUESTION #5--------
+--Write a query that shows each customer the date of the last order they made and the date of the order before the last one they made.
+--Display: SalesOrderID, CustomerID, LastName, FirstName, date of last order, date of order before last.
 
 USE AdventureWorks2019
 
@@ -93,7 +108,9 @@ WHERE    RANK = 1
 ORDER BY ShipMethodID DESC, CustomerID
 
 
---------QUESTION NUMBER 6--------
+--------QUESTION #6--------
+--Write a query that shows the amount of the purchase in the most expensive order each year, you must show which customers these orders belong to.
+--Display: order date year, order number, customer's last name and first name, and the Total (UnitPrice*(1- UnitPriceDiscount)*OrderQty).
 
 USE AdventureWorks2019
  
@@ -121,7 +138,8 @@ WHERE    Rank = 1
 ORDER BY Year 
 
 
---------QUESTION NUMBER 7--------
+--------QUESTION #7--------
+--Write a query that shows the number of orders made in each month of the year.
 
 USE AdventureWorks2019
 
@@ -132,7 +150,9 @@ A PIVOT (COUNT(SalesOrderID) FOR Year IN ([2011],[2012],[2013],[2014])) PIV
 ORDER BY Month
 
 
---------QUESTION NUMBER 8--------
+--------QUESTION #8--------
+--Write a query that shows the number of orders for each month of the year and the total amount each year. 
+--A line highlighting the year's summary must be presented.
 
 USE AdventureWorks2019
 
@@ -167,7 +187,10 @@ WHERE    RANK = 1
 ORDER BY Year, Money
 
 		 
---------QUESTION NUMBER 9--------
+--------QUESTION #9--------
+--Write a query that shows the employees in the order they were hired in each department from the newest employee to the oldest employee.
+--Display: DepartmentName, EmployeeID, FullName, employment date, seniority (months), FullName and employment date of the employee who was hired before him. 
+--Display: the number of days that passed between the employment date of the employee and the previous employee.
 
 USE AdventureWorks2019
 
@@ -202,6 +225,8 @@ ORDER BY DepartmentName, HireDate DESC
 
 
 --------QUESTION NUMBER 10--------
+--Write a query that shows the details of employees who work in the same department and were hired on the same date. 
+--The employees will be displayed as a list against each combination of receipt date and department number.
 
 USE AdventureWorks2019
 
